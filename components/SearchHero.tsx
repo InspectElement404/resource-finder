@@ -100,7 +100,11 @@ export default function SearchHero() {
                 <div className="w-1/3 bg-slate-50 flex flex-col pt-6 items-center border-r border-slate-100 ">
                   <div className="relative">
                     <img
-                      src={expert[4] || "https://via.placeholder.com/150"}
+                      src={
+                        typeof expert[4] === "string" && expert[4]
+                          ? expert[4]
+                          : "https://via.placeholder.com/150"
+                      }
                       alt={String(expert[1])}
                       className="rounded-full object-cover h-24 w-24 border-4 border-white shadow-sm group-hover:scale-105 transition-transform"
                     />

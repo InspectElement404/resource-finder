@@ -3,13 +3,13 @@ import { signIn } from "next-auth/react";
 
 export default function LoginPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-slate-50">
+    <div className="flex min-h-screen items-center justify-center bg-slate-50 font-helvetica">
       <div className="p-8 bg-white shadow-xl rounded-2xl border border-slate-200 text-center max-w-sm">
         <h1 className="text-2xl font-bold text-slate-800 mb-2">
           LGA Repository
         </h1>
         <p className="text-slate-500 mb-6 text-sm">
-          Please sign in with your organization email to continue.
+          Please sign in with your LGA email to continue.
         </p>
 
         <button
