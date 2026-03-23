@@ -1,18 +1,16 @@
 import React from "react";
-import "../globals.css";
+// You usually don't need to import globals.css again if it's in the root layout
 import Topbar from "@/components/Topbar";
 
-export default function RootLayout({
+export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html>
-      <body className="font-mono">
-        <Topbar />
-        {children}
-      </body>
-    </html>
+    <>
+      <Topbar />
+      <main className="min-h-screen bg-slate-50">{children}</main>
+    </>
   );
 }
