@@ -6,7 +6,6 @@ const handler = NextAuth({
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-      // This hints to Google to only show accounts from this domain
       authorization: {
         params: {
           hd: "lga.gov.ph",
@@ -16,14 +15,24 @@ const handler = NextAuth({
   ],
   callbacks: {
     async signIn({ profile }) {
-      // STRICT SECURITY: Check if the email ends with your domain
       const email = profile?.email?.toLowerCase();
-      return !!(email && email.endsWith("@lga.gov.ph"));
+
+      // ✅ allow:
+      // - all @lga.gov.ph
+      // - your personal email
+      return !!(
+        email &&
+        (
+          email.endsWith("@lga.gov.ph") ||
+          email === "rcacaballero18@gmail.com " || 
+          email === "markwenefredporazo@gmail.com " || 
+        )
+      );
     },
   },
   pages: {
-    signIn: "/login", // We will create this custom page next
-    error: "/login", // Redirect back to login on failure
+    signIn: "/login",
+    error: "/login",
   },
 });
 
